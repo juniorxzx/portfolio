@@ -6,7 +6,7 @@ interface ContextType {
     themes: string;
     setThemes: (theme: string) => void;
     option: string;
-    setOption: (option: string) => void;
+    setOption: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const DEFAULT_VALUE: ContextType = {

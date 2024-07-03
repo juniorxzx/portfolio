@@ -16,7 +16,7 @@ const Header = () => {
 
   const checkOption = (value: string) => {
     console.log(value)
-    setOption((prevOption: string) => {
+    setOption((prevOption) => {
       if (prevOption === value) {
         return '';
       } else {
