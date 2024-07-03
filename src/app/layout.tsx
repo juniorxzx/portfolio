@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Nunito } from "next/font/google";
+import StyledComponentsRegistry from "@/lib/register";
+import { GlobalProvider } from "@/context/GlobalContext";
+import { ThemeProviderNext } from "@/context/ThemeProvider";
+import { GlobalStyles } from "@/assets/styles/global";
+import Header from "@/components/header/header";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <GlobalProvider>
+      <StyledComponentsRegistry>
+        <ThemeProviderNext>
+          <GlobalStyles />
+          <html lang="pt-BR">
+            <body className={font.className}>
+              {/* <Header /> */}
+              {children}
+            </body>
+          </html>
+        </ThemeProviderNext>
+      </StyledComponentsRegistry>
+    </GlobalProvider>
   );
 }
